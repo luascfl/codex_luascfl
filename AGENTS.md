@@ -1,20 +1,29 @@
+# AGCAO - Ambiente de Configuração de Agentes (Codex, Gemini, Cline, Aider, Opencode)
+
+Este repositório centraliza as configurações, regras e instruções de estilo para múltiplos assistentes de programação de IA.
+Este arquivo (`AGENTS.md`) atua como a **Fonte da Verdade** e o **README** do projeto.
+
 ---
-# GEMINI.md - Configuração baseada no README.md
-# Este arquivo define as regras e configurações para o Gemini no ambiente AGC.
 
-# 1. Visão geral e definições (conforme README.md)
+# 1. Visão geral e definições
 visão_geral:
-  objetivo: "Manter a consistência entre Codex, Gemini, Cline e Aider."
-  definição_agc:
-    - "Agents.md (Codex)"
-    - "Gemini.md (Contexto do Gemini)"
-    - "Cline rules (.clinerules)"
-    - "Aider conventions (.aider.conf.yml / conventions.md)"
-  suporte_adicional:
-    - "Agent Skills nativas (Codex)"
-    - "Cline como agente autônomo com suporte avançado a MCP"
+  objetivo: "Manter a consistência entre instruções personalizadas do sistema do Codex, Gemini, Cline, Aider e Opencode utilizando de symlinks."
+  locais_agcao:
+    - "AGENTS.md (~/.codex/AGENTS.md)"
+    - "GEMINI.md (~/.gemini/GEMINI.md)"
+    - "Cline rules (~/Documentos/Cline/Rules/AGENTS.md)"
+    - "Aider conventions (.aider.conf.yml >> ~/Documentos/CONVENTIONS.md)"
+conteúdo fixo para ~/.aider.conf.yml:
+```yaml
+read: ~/Documents/CONVENTIONS.md
+```
+    - "Opencode AGENTS.md (~/.config/opencode/AGENTS.md)"
 
-# 2. Instruções personalizadas de estilo (conforme README.md)
+Todos devem apontar para o local atual do script e fazer symlink para AGENTS.md na pasta do local atual do script.
+ex: ~/Downloads/codex_luascfl/copy_agcao_files.sh
+arquivos symlink dos locais AGCAO devem apontar para: ~/Downloads/codex_luascfl/AGENTS.md
+
+# 2. Instruções personalizadas de estilo
 estilo_escrita:
   - "Escreva de forma fluida e articulada, conectando ideias logicamente, mas utilize um registro de linguagem natural e acessível, evitando estritamente o academicismo excessivo, jargões complexos ou orações labirínticas que prejudiquem a leitura."
   - "Busque um equilíbrio rítmico: combine frases articuladas com pausas claras e vocabulário cotidiano, garantindo que a sofisticação esteja na clareza do raciocínio e não na dificuldade das palavras, tornando o texto envolvente sem ser denso ou cansativo."
@@ -26,7 +35,7 @@ formatação:
   - "Não use emojis."
   - "Não use em dashes, travessões ou hífens no lugar de vírgula."
 
-# 3. Perfil do usuário (conforme README.md)
+# 3. Perfil do usuário
 perfil_usuário:
   nome: "Lucas Camilo Carvalho"
   localização: "Salvador, Bahia"
@@ -34,13 +43,12 @@ perfil_usuário:
     - "Português (Primário)"
     - "Inglês (Secundário)"
 
-# 4. Configurações do ambiente (conforme README.md)
+# 4. Protocolos de leitura, execução e configurações do ambiente
 ambiente:
   sistema_operacional: "Lubuntu"
   caminho_base_gdrive: "/run/user/1000/gvfs/dav:host=app.koofr.net,ssl=true,user=lucascamr107%40gmail.com,prefix=%2Fdav/Google Drive/"
-  diretório_gemini_gems: "Gemini Gems/"
-
-# 5. Protocolos de leitura e execução (conforme README.md)
+  diretório_gemini_gems: "/run/user/1000/gvfs/dav:host=app.koofr.net,ssl=true,user=lucascamr107%40gmail.com,prefix=%2Fdav/Google Drive/Gemini Gems/"
+ 
 protocolos:
   leitura_gems:
     comando: 'cat "Nome do Arquivo.gem"'
@@ -50,22 +58,28 @@ protocolos:
     extensões: [".txt", ".json", ".md"]
     observação: "Crie arquivos com extensões explícitas para conteúdo legível."
 
-# 6. Hierarquia de configuração (conforme README.md)
-hierarquia_configuração:
-  - "System Defaults (system-defaults.json)"
-  - "User Settings (~/.gemini/settings.json)"
-  - "Workspace Settings (<projeto>/.gemini/settings.json)"
-  - "System Overrides (settings.json)"
 
-# 7. Locais de configuração AGC (conforme README.md)
-locais_agc:
-  codex: "~/.codex/AGENTS.md"
-  cline: ".clinerules"
-  gemini: "System Instructions (via configurações do usuário ou Gems)"
-  aider: "~/.aider.conf.yml"
+# 5. Instruções para adicionar MCP e extensões
 
-# 8. Instruções para MCP (conforme README.md)
-mcp:
+codex:
+
+Edite `~/.codex/config.toml` e adicione a tabela `[mcp_servers]` seguindo a sintaxe TOML.
+
+exemplo_codex_mcp:
+```toml
+[mcp_servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/home/lucas"]
+```
+
+cline e gemini:
+Para ferramentas locais específicas que não estão empacotadas como extensões, edite diretamente os arquivos de configuração (preferencialmente ~/.gemini/settings.json).
+O Cline permite gerenciar ferramentas MCP através de uma interface dedicada ou edição manual de arquivos JSON.
+
+- Instalação via interface: clique no ícone MCP na barra de ferramentas do Cline, selecione o servidor desejado (ex.: Slack) e clique para instalar. O Cline tentará configurar o ambiente automaticamente.
+- Configuração manual (cline_mcp_settings.json): caso a configuração automática falhe ou precise de ajustes, edite o arquivo cline_mcp_settings.json.
+
+exemplo_cline_gemini_mcp:
   slack:
     comando: "npx"
     args: ["-y", "@modelcontextprotocol/server-slack"]
@@ -76,7 +90,8 @@ mcp:
     comando: "npx"
     args: ["-y", "@modelcontextprotocol/server-filesystem", "/home/lucas"]
 
-# 9. Instruções para Skills (conforme README.md)
+
+# 6. Instruções para Skills do Codex
 skills:
   codex:
     local_padrão: "~/.codex/skills"
@@ -99,7 +114,9 @@ skills:
   gemini_cli:
     nota: "O Gemini e o Cline não suportam o padrão de Agent Skills do Codex. Descreva capacidades específicas no arquivo .clinerules ou crie ferramentas MCP via linguagem natural."
 
-# 10. Instruções para Prompts (conforme README.md)
+
+
+# 9. Instruções para Prompts do Codex
 prompts:
   codex:
     local: "~/.codex/prompts/"
@@ -108,11 +125,7 @@ prompts:
   gemini:
     nota: "Prompts reutilizáveis servem para tarefas rápidas e repetitivas. Crie arquivos Markdown em ~/.codex/prompts/ com frontmatter YAML."
 
-# 11. Variáveis de ambiente sugeridas (conforme README.md)
-variáveis_ambiente:
-  GDRIVE: "/run/user/1000/gvfs/dav:host=app.koofr.net,ssl=true,user=lucascamr107%40gmail.com,prefix=%2Fdav/Google Drive/"
-
-# 12. Comandos úteis (conforme README.md)
+# 10. Comandos úteis
 comandos:
   verificação_codex: 'codex --ask-for-approval never "Show which instruction files are active."'
   instalação_extensões_gemini: "gemini extensions install <url-do-repositorio>"

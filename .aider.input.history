@@ -1,0 +1,72 @@
+
+# 2025-12-20 12:05:34.523628
++y
+
+# 2025-12-20 12:05:55.923339
++leia o readme e sincronize o agc, criando o cline rules na pasta atual
+
+# 2025-12-20 12:07:30.314128
++/model
+
+# 2025-12-20 12:07:38.583999
++/models devstral
+
+# 2025-12-20 12:08:37.937183
++/model openrouter/mistralai/devstral-2512:free
+
+# 2025-12-20 12:10:47.622600
++/model
+
+# 2025-12-20 12:11:30.671603
++leia o README.md e faça a sincronização do agc na pasta atual com os conteudos do readme, criando o cline rules na pasta atual 
+
+# 2025-12-20 12:11:39.436782
++y
+
+# 2025-12-20 12:12:32.354938
++agora sincroniza o AGENTS.md
+
+# 2025-12-20 12:12:35.612843
++d
+
+# 2025-12-20 12:12:55.975253
++y
+
+# 2025-12-20 12:13:17.784557
++sincroniza o GEMINI.md
+
+# 2025-12-20 12:13:30.398862
++y
+
+# 2025-12-20 12:13:54.641356
++copia os agc para as pastas corretas no sistema
+
+# 2025-12-20 12:14:18.571809
++y
+
+# 2025-12-20 12:14:26.735936
++roda esse script
+
+# 2025-12-20 12:14:36.823411
++y
+
+# 2025-12-20 12:14:54.452867
++/undo
+
+# 2025-12-20 12:23:14.504166
++leia o readme de novo e depois sincronize o agca
+
+# 2025-12-20 12:23:58.976735
++criou o aider yaml? 
+
+# 2025-12-20 12:25:33.551620
++y
+
+# 2025-12-20 12:26:11.502134
++altere o script de copy_agc_files.sh para considerar a cópia do aider pro local correto
+
+# 2025-12-20 12:30:33.304905
++mudei o README.md considere a criação do yaml para sempre ler o conventions e crie o conventions global
+
+# 2025-12-20 12:31:33.203395
++n
