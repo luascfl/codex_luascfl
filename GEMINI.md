@@ -4,28 +4,27 @@
 
 # 1. Visão geral e definições (conforme README.md)
 visão_geral:
-  objetivo: "Manter a consistência entre Codex, Gemini e Cline."
+  objetivo: "Manter a consistência entre Codex, Gemini, Cline e Aider."
   definição_agc:
     - "Agents.md (Codex)"
     - "Gemini.md (Contexto do Gemini)"
     - "Cline rules (.clinerules)"
+    - "Aider conventions (.aider.conf.yml / conventions.md)"
   suporte_adicional:
     - "Agent Skills nativas (Codex)"
     - "Cline como agente autônomo com suporte avançado a MCP"
 
 # 2. Instruções personalizadas de estilo (conforme README.md)
 estilo_escrita:
-  - "Escreva de forma fluida e articulada, conectando ideias logicamente."
-  - "Use linguagem natural e acessível, evitando academicismo excessivo ou jargões complexos."
-  - "Busque equilíbrio rítmico: combine frases articuladas com pausas claras e vocabulário cotidiano."
-  - "Evite estruturas de frase que criem expectativas para depois negá-las."
-  - "Use afirmações diretas e positivas."
-  - "Seja criativo na construção das frases e estilos de expressão."
+  - "Escreva de forma fluida e articulada, conectando ideias logicamente, mas utilize um registro de linguagem natural e acessível, evitando estritamente o academicismo excessivo, jargões complexos ou orações labirínticas que prejudiquem a leitura."
+  - "Busque um equilíbrio rítmico: combine frases articuladas com pausas claras e vocabulário cotidiano, garantindo que a sofisticação esteja na clareza do raciocínio e não na dificuldade das palavras, tornando o texto envolvente sem ser denso ou cansativo."
+  - "Evite estruturas de frase que criem uma expectativa para depois negá-la ou expandi-la. Em vez disso, use afirmações diretas e positivas."
+  - "Sinta-se à vontade para ser criativo na construção das frases e nos estilos de expressão."
 
 formatação:
-  - "Use 'sentence case' (apenas a primeira letra maiúscula)."
+  - "Não use maiúscula para fins estilísticos, use sentence case sempre que possível."
   - "Não use emojis."
-  - "Não use dashes, travessões ou hífens no lugar de vírgulas."
+  - "Não use em dashes, travessões ou hífens no lugar de vírgula."
 
 # 3. Perfil do usuário (conforme README.md)
 perfil_usuário:
@@ -45,10 +44,11 @@ ambiente:
 protocolos:
   leitura_gems:
     comando: 'cat "Nome do Arquivo.gem"'
-    observação: "Use sempre aspas duplas para caminhos com espaços."
+    observação: "Use sempre aspas duplas para caminhos com espaços. Arquivos podem iniciar com emojis (ex.: ❗)."
   criação_gems:
     padrão_nome: "❗ Estrutura {Nome do prompt}"
     extensões: [".txt", ".json", ".md"]
+    observação: "Crie arquivos com extensões explícitas para conteúdo legível."
 
 # 6. Hierarquia de configuração (conforme README.md)
 hierarquia_configuração:
@@ -62,6 +62,7 @@ locais_agc:
   codex: "~/.codex/AGENTS.md"
   cline: ".clinerules"
   gemini: "System Instructions (via configurações do usuário ou Gems)"
+  aider: "~/.aider.conf.yml"
 
 # 8. Instruções para MCP (conforme README.md)
 mcp:
@@ -89,6 +90,14 @@ skills:
     invocação:
       explícita: "/skills ou $"
       implícita: "Codex decide com base na descrição"
+    instalação:
+      comando: "$skill-installer <nome-da-skill>"
+      exemplo: "$skill-installer linear"
+    criação:
+      automática: "$skill-creator"
+      manual: "Crie pasta com SKILL.md contendo frontmatter YAML"
+  gemini_cli:
+    nota: "O Gemini e o Cline não suportam o padrão de Agent Skills do Codex. Descreva capacidades específicas no arquivo .clinerules ou crie ferramentas MCP via linguagem natural."
 
 # 10. Instruções para Prompts (conforme README.md)
 prompts:
@@ -96,6 +105,8 @@ prompts:
     local: "~/.codex/prompts/"
     formato: "Markdown com frontmatter YAML"
     invocação: "/prompts:nome-do-arquivo"
+  gemini:
+    nota: "Prompts reutilizáveis servem para tarefas rápidas e repetitivas. Crie arquivos Markdown em ~/.codex/prompts/ com frontmatter YAML."
 
 # 11. Variáveis de ambiente sugeridas (conforme README.md)
 variáveis_ambiente:
@@ -107,3 +118,4 @@ comandos:
   instalação_extensões_gemini: "gemini extensions install <url-do-repositorio>"
   instalação_skills_codex: "$skill-installer <nome-da-skill>"
   criação_skills_codex: "$skill-creator"
+  verificação_mcp: "/mcp"
