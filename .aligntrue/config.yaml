@@ -1,0 +1,16 @@
+mode: solo
+sources:
+  - type: git
+    url: https://github.com/luascfl/codex_luascfl
+    ref: main
+    path: .aligntrue/rules
+exporters:
+  - agents
+  - aider
+  - aider-config
+  - antigravity
+  - cline
+  - codex-config
+  - cursor
+  - gemini-cli
+  - gemini-config
