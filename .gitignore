@@ -17,3 +17,26 @@ node_modules/
 dist/
 build/
 *.zip
+
+# START AlignTrue Generated Files
+.agent/rules/*.md
+.agent/rules/AGENTS.md
+.agent/rules/global.md
+.aider.conf.yml
+.aligntrue/.backups/
+.clinerules/*.md
+.clinerules/AGENTS.md
+.clinerules/global.md
+.codex/config.toml
+.cursor/rules/*.mdc
+.cursor/rules/AGENTS.mdc
+.cursor/rules/global.mdc
+.gemini/settings.json
+AGENTS.md
+GEMINI.md
+# END AlignTrue Generated Files
+GITHUB_TOKEN.txt,
+AMO_API_KEY.txt,
+AMO_API_SECRET.txt,
+gemini-gcloud-key.json,
+*API*,

@@ -9,9 +9,24 @@
 This file contains the canonical rules from `.aligntrue/rules/`.
 AI agents should follow these guidelines.
 
+<!-- aligntrue:rule global.md -->
+
+## Global
+
+Regras globais para todos os projetos
+
+Always applied. For files: `**/*`.
+
+# Regras Globais
+
+Estas regras se aplicam a todos os arquivos em todos os projetos, garantindo consistência independente do repositório.
+
+
 <!-- aligntrue:rule AGENTS.md -->
 
 ## Agents
+
+Always applied.
 
 # AGCAO - Ambiente de Configuração de Agentes (Codex, Gemini, Cline, Aider, Opencode)
 
@@ -129,9 +144,14 @@ skills:
   gemini_cli:
     nota: "O Gemini e o Cline não suportam o padrão de Agent Skills do Codex. Descreva capacidades específicas no arquivo .clinerules ou crie ferramentas MCP via linguagem natural."
 
+# 7. Arquitetura de Sincronização
+arquitetura:
+  - "O **AlignTrue** atua como o 'compilador' de conteúdo: ele processa as regras em `.aligntrue/rules/` e gera o arquivo mestre `AGENTS.md` validado na raiz do repositório."
+  - "O script **copy_agcao_files.sh** atua como o 'distribuidor' global: ele vincula o arquivo `AGENTS.md` gerado às pastas do sistema (~/.gemini, ~/.codex, etc.) via links simbólicos, garantindo que a mudança ocorra em nível global."
 
 
-# 9. Instruções para Prompts do Codex
+
+# 8. Instruções para Prompts do Codex
 prompts:
   codex:
     local: "~/.codex/prompts/"
@@ -140,10 +160,11 @@ prompts:
   gemini:
     nota: "Prompts reutilizáveis servem para tarefas rápidas e repetitivas. Crie arquivos Markdown em ~/.codex/prompts/ com frontmatter YAML."
 
-# 10. Comandos úteis
+# 9. Comandos úteis
 comandos:
   verificação_codex: 'codex --ask-for-approval never "Show which instruction files are active."'
   instalação_extensões_gemini: "gemini extensions install <url-do-repositorio>"
   instalação_skills_codex: "$skill-installer <nome-da-skill>"
   criação_skills_codex: "$skill-creator"
   verificação_mcp: "/mcp"
+

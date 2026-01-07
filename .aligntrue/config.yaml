@@ -1,8 +1,6 @@
 mode: solo
 sources:
-  - type: git
-    url: https://github.com/luascfl/codex_luascfl
-    ref: main
+  - type: local
     path: .aligntrue/rules
 exporters:
   - agents
@@ -14,3 +12,5 @@ exporters:
   - cursor
   - gemini-cli
   - gemini-config
+export:
+  content_mode: inline
