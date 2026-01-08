@@ -1,6 +1,3 @@
-[submodule "node_modules"]
-	path = node_modules
-	url = https://github.com/luascfl/node_modules.git
 [submodule "extensions_backup"]
 	path = extensions_backup
 	url = https://github.com/luascfl/extensions_backup.git
